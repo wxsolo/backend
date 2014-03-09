@@ -1,2 +1,0 @@
-# slowlytime
-### a Sails application
