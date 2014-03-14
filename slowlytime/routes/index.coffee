@@ -4,4 +4,6 @@
 # 
 module.exports = (app) ->
     app.get '/',(req,res)->
-        res.render 'index'
+        res.render 'index',
+            title: "slowlytime"
+            brand: "slowlytime"

@@ -3,7 +3,7 @@
 Module dependencies.
 */
 
-var app, express, http, path, routes;
+var app, ejs, express, http, path, routes;
 
 express = require("express");
 
@@ -13,9 +13,15 @@ http = require("http");
 
 path = require("path");
 
+ejs = require("ejs");
+
 app = express();
 
-app.set("port", process.env.PORT || 3000);
+ejs.open = "{{";
+
+ejs.close = "}}";
+
+app.set("port", process.env.PORT || 4000);
 
 app.set("views", path.join(__dirname, "views"));
 

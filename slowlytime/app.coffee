@@ -6,10 +6,12 @@ express = require("express")
 routes = require("./routes")
 http = require("http")
 path = require("path")
+ejs = require("ejs")
 app = express()
-
+ejs.open = "{{"
+ejs.close = "}}"
 # all environments
-app.set "port", process.env.PORT or 3000
+app.set "port", process.env.PORT or 4000
 app.set "views", path.join(__dirname, "views")
 app.set "view engine", "ejs"
 app.use express.favicon()
