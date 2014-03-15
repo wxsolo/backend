@@ -1,4 +1,11 @@
 {
     "brand": "Slowlytime",
-    "title": "slowlytime"
+    "title": "slowlytime",
+    "douban_auth": {
+        "client_id": "0a0c3ced6899bed81e24b6c839cd3c88",
+        "client_secret": "17f97963e7c86b7d",
+        "dev_host": "http://localhost:4000/",
+        "pro_host": "http://www.slowlytime.com/",
+        "grant_type": "authorization_code"
+    }
 }

@@ -1,7 +1,26 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
   color: #00b7ff;
+}
+#main {
+  min-height: 600px;
+}
+.login {
+  margin: 100px 0 0 0;
+}
+.login .form-signin {
+  max-width: 330px;
+  margin: 0 auto;
+}
+.login .form-signin input[type=email],
+.login .form-signin input[type=password] {
+  margin: 10px 0 0 0;
+}
+.login .form-signin .socail-login {
+  padding: 5px 0 0 0;
+}
+.login .form-signin button {
+  margin: 5px 0 0 0;
 }

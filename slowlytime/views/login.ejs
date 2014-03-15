@@ -1,0 +1,13 @@
+{{- include conn/header}}
+    <div class="login">
+        <form class="form-signin" role="form">
+            <h2 class="form-signin-heading">登录</h2>
+            <input type="email" class="form-control" placeholder="Email address" required="" autofocus=""> 
+            <input type="password" class="form-control" placeholder="Password" required="">
+            <label class="socail-login">
+                <a href="/users/auth/douban"><img src="../images/source/douban.png" alt=""></a>
+            </label>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+        </form>
+    </div>
+{{- include conn/footer}}

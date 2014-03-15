@@ -4,6 +4,7 @@ Module dependencies.
 ###
 express = require("express")
 routes = require("./routes")
+user = require("./routes/user")
 http = require("http")
 path = require("path")
 ejs = require("ejs")
@@ -31,4 +32,4 @@ http.createServer(app).listen app.get("port"), ->
 # rewrite routes
 
 routes app
-
+user app
