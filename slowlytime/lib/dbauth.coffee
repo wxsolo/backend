@@ -22,14 +22,14 @@ class Dbauth
             form: 
                 client_id: setting.douban_auth.client_id
                 client_secret: setting.douban_auth.client_secret
-                redirect_uri: setting.douban_auth.dev_host
+                redirect_uri: setting.douban_auth.pro_host
                 grant_type: setting.douban_auth.grant_type
                 code:code
             (error,response,body)->
                 if not error and response.statusCode == 200
                     next null,JSON.parse(body).access_token
                 else
-                    next response.statusCode,null
+                    next 'error',null
     __getCode = (url)->
         return url.split('=')[1]
 
