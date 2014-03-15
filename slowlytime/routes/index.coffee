@@ -2,8 +2,10 @@
 #
 # * GET home page.
 # 
+
+setting = require '../setting'
 module.exports = (app) ->
     app.get '/',(req,res)->
         res.render 'index',
-            title: "slowlytime"
-            brand: "slowlytime"
+            title: setting.title
+            brand: setting.brand
