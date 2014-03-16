@@ -1,13 +1,18 @@
 {{- include conn/header}}
+<div id="main" class="content row">
     <div class="login">
+        <h2 class="form-signin-heading"><a href="/">Slowlytime</a></h2>
         <form class="form-signin" role="form">
-            <h2 class="form-signin-heading">登录</h2>
-            <input type="email" class="form-control" placeholder="Email address" required="" autofocus=""> 
-            <input type="password" class="form-control" placeholder="Password" required="">
-            <label class="socail-login">
-                <a href="/users/auth/douban"><img src="../images/source/douban.png" alt=""></a>
-            </label>
+            <input type="email" class="form-control" placeholder="邮箱" required="" autofocus=""> 
+            <input type="password" class="form-control" placeholder="密码" required="">
             <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
         </form>
+        <div class="socail-login">
+            <div class="regs-link"> 还没有账号?<a href="/reg">注册</a></div>
+            <div class="douban">
+                <a href="/users/auth/douban"><img src="../images/source/douban.png" alt="">&nbsp使用豆瓣登录</a>
+            </div>
+        </div>
     </div>
+</div>
 {{- include conn/footer}}

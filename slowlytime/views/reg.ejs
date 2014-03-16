@@ -1,0 +1,16 @@
+{{- include conn/header}}
+<div id="main" class="content row">
+    <div class="reg">
+        <h2 class="form-reg-heading"><a href="/">Slowlytime</a></h2>
+        <form class="form-regin" role="form">
+            <input type="text" class="form-control" placeholder="昵称" required="" autofocus=""> 
+            <input type="email" class="form-control" placeholder="邮箱" required="" > 
+            <input type="password" class="form-control" placeholder="密码" required="">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+        </form>
+        <div class="socail-reg"> 
+            已有账号？<a href="/login">登录</a>
+        </div>
+    </div>
+</div>
+{{- include conn/footer}}

@@ -1,26 +1,55 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-a {
-  color: #00b7ff;
-}
 #main {
   min-height: 600px;
 }
 .login {
-  margin: 100px 0 0 0;
+  margin: 120px auto;
+  max-width: 330px;
+}
+.login .form-signin-heading a {
+  color: #000;
+  text-decoration: none;
 }
 .login .form-signin {
   max-width: 330px;
-  margin: 0 auto;
+  margin: 50px auto;
 }
 .login .form-signin input[type=email],
 .login .form-signin input[type=password] {
-  margin: 10px 0 0 0;
-}
-.login .form-signin .socail-login {
-  padding: 5px 0 0 0;
+  margin: 15px 0 0 0;
 }
 .login .form-signin button {
-  margin: 5px 0 0 0;
+  margin: 15px 0 0 0;
+}
+.login .socail-login {
+  margin: -10px 0 0 0;
+}
+.login .socail-login .douban {
+  margin: 10px 0 0 0;
+  font-size: 16px;
+  line-height: 18px;
+}
+.reg {
+  margin: 120px auto;
+  max-width: 330px;
+}
+.reg .form-regin-heading a {
+  color: #000;
+  text-decoration: none;
+}
+.reg .form-regin {
+  max-width: 330px;
+  margin: 50px auto;
+}
+.reg .form-regin input[type=email],
+.reg .form-regin input[type=password] {
+  margin: 15px 0 0 0;
+}
+.reg .form-regin button {
+  margin: 15px 0 0 0;
+}
+.reg .socail-regin {
+  margin: -10px 0 0 0;
 }

@@ -11,9 +11,14 @@ module.exports = (app) ->
         res.render 'index',
             title: setting.title
             brand: setting.brand
-   
+
     app.get '/login',(req,res)->
         res.render 'login',
             title: setting.title
             brand: setting.brand
-   
+
+    app.get '/reg',(req,res)->
+        res.render 'reg',
+            title: setting.title
+            brand: setting.brand
+
