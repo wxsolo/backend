@@ -53,7 +53,7 @@ define(function(require, exports, module) {
 
     msgHandle = function(msg) {
       if (msg.errorCode === 202) {
-        return Kit.redirect('/admin');
+        return Kit.redirect('/user');
       } else if (msg.errorCode === 103) {
         return Kit.errorTip($errorTip, '用户不存在！', 'show');
       } else if (msg.errorCode === 104) {

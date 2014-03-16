@@ -52,6 +52,25 @@ module.exports = function(app) {
       });
     });
   });
+  app.post('/user/login', function(req, res) {
+    var loginInfo, md5;
+    md5 = crypto.createHash('md5');
+    loginInfo = {
+      email: req.body.email,
+      password: md5.update(req.body.password).digest('base64')
+    };
+    return User.get(loginInfo, function(err, user) {
+      if (user == null) {
+        status.errorCode = 103;
+      } else if (loginInfo.password !== user.password) {
+        status.errorCode = 104;
+      } else {
+        req.session.user = user;
+        status.errorCode = 202;
+      }
+      return res.json(status);
+    });
+  });
   return app.get('/user', function(req, res) {
     return res.render('index', {
       title: setting.title,

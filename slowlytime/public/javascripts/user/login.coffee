@@ -31,7 +31,7 @@ define (require,exports,module) ->
           return bok
         msgHandle = (msg)->
           if msg.errorCode is 202
-            Kit.redirect '/admin'
+            Kit.redirect '/user'
           else if msg.errorCode is 103
             Kit.errorTip $errorTip,'用户不存在！','show'
           else if msg.errorCode is 104
