@@ -4,22 +4,12 @@ define(function(require, exports, module) {
   Router = (function() {
     var current, urlHash;
 
-    function Router() {
-      this.url = window.location.href;
-      this.init(this.url);
-    }
-
     current = '';
 
-    Router.prototype.init = function(url) {
-      return urlHash(url);
-    };
-
-    urlHash = function(url) {
-      var urls;
-      urls = url.split('/');
-      return current = urls[3];
-    };
+    function Router() {
+      this.url = window.location.href;
+      urlHash(this.url);
+    }
 
     Router.prototype.on = function(router, next) {
       if (router === current) {
@@ -27,6 +17,12 @@ define(function(require, exports, module) {
       } else {
         return next('not current', null);
       }
+    };
+
+    urlHash = function(url) {
+      var urls;
+      urls = url.split('/');
+      return current = urls[3];
     };
 
     return Router;
