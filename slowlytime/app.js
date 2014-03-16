@@ -39,6 +39,14 @@ app.use(express.urlencoded());
 
 app.use(express.methodOverride());
 
+app.use(express.bodyParser());
+
+app.use(express.cookieParser());
+
+app.use(express.session({
+  secret: '1234567890QWERTY'
+}));
+
 app.use(app.router);
 
 app.use(require("stylus").middleware(path.join(__dirname, "public")));

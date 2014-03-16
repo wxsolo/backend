@@ -20,7 +20,6 @@ User::register = (info,next)->
   self.name = info.name
   self.email = info.email
   self.password = info.password
-  console.log self
   self.save()
   next null,info
 # check user

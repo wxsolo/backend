@@ -31,7 +31,6 @@ User.prototype.register = function(info, next) {
   self.name = info.name;
   self.email = info.email;
   self.password = info.password;
-  console.log(self);
   self.save();
   return next(null, info);
 };
