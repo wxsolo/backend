@@ -1,13 +1,13 @@
 define (require,exports,module)->
-    $ = require '$'
-    Bootstrap = require 'bootstrap'
     Router = require './lib/router'
     Register = require './user/register'
+    Login = require './user/login'
 
     router = new Router()
 
     router.on 'reg',(err,current)->
-        console.log current 
         if current
             new Register()
-    
+    router.on 'login',(err,current)->
+        if current
+            new Login()

@@ -1,6 +1,6 @@
 
 #
-# * GET home page.
+# * User models
 # 
 setting = require '../setting'
 Dbauth = require '../lib/dbauth'

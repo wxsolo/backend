@@ -54,8 +54,8 @@ module.exports = function(app) {
   });
   return app.get('/user', function(req, res) {
     return res.render('index', {
-      title: 'test',
-      brand: 'test'
+      title: setting.title,
+      brand: setting.brand
     });
   });
 };

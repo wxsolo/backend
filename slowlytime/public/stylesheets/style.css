@@ -5,7 +5,7 @@ body {
   min-height: 600px;
 }
 .login {
-  margin: 120px auto;
+  margin: 80px auto;
   max-width: 330px;
 }
 .login .form-signin-heading a {
@@ -14,7 +14,7 @@ body {
 }
 .login .form-signin {
   max-width: 330px;
-  margin: 50px auto;
+  margin: 0 auto;
 }
 .login .form-signin input[type=email],
 .login .form-signin input[type=password] {
@@ -24,7 +24,7 @@ body {
   margin: 15px 0 0 0;
 }
 .login .socail-login {
-  margin: -10px 0 0 0;
+  margin: 25px 0 0 0;
 }
 .login .socail-login .douban {
   margin: 10px 0 0 0;
@@ -41,7 +41,7 @@ body {
 }
 .reg .form-regin {
   max-width: 330px;
-  margin: 5px auto;
+  margin: 0 auto;
 }
 .reg .form-regin input[type=email],
 .reg .form-regin input[type=password] {
@@ -51,11 +51,11 @@ body {
   margin: 15px 0 0 0;
 }
 .reg .socail-regin {
-  margin: 30px 0 0 0;
+  margin: 25px 0 0 0;
 }
 .error-tip {
   height: 30px;
   max-width: 330px;
-  margin: 15px 0 0 0;
+  margin: 30px 0 0 0;
   text-aligin: center;
 }
