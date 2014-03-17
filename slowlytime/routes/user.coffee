@@ -58,6 +58,14 @@ module.exports = (app) ->
             res.json status
 
     app.get '/user',(req,res)->
+        checkLogin req,res
         res.render 'index',
             title: setting.title
             brand: setting.brand
+    app.get '/user/setting',(req,res)->
+        res.render 'user/setting',
+            title: setting.title
+            brand: setting.brand
+    
+    checkLogin = (req,res)->
+        res.redirect '/login' if req.session.user?

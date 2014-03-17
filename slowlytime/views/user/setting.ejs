@@ -1,0 +1,25 @@
+{{- include ../conn/header}}
+{{- include ../conn/navbar}}
+    <div id="main" class="content row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <ul class="nav nav-tabs setting-nav">
+                <li class="active">
+                    <a href="/user/setting#account">账号</a>
+                </li>
+                <li>
+                    <a href="/user/setting#password">密码</a>
+                </li>
+            </ul>
+            <ul class="setting-item">
+                <li data-key="account" class="show">
+                    test
+                </li>
+                <li data-key="password" class="hide">
+                    hellow
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+{{- include ../conn/footer}}

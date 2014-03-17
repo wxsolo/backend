@@ -2,6 +2,7 @@ define (require,exports,module)->
     Router = require './lib/router'
     Register = require './user/register'
     Login = require './user/login'
+    Setting = require './user/setting'
 
     router = new Router()
 
@@ -11,3 +12,6 @@ define (require,exports,module)->
     router.on 'login',(err,current)->
         if current
             new Login()
+    router.on 'user',(err,current)->
+        if current
+            new Setting()
