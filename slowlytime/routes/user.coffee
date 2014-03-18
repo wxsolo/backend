@@ -1,6 +1,6 @@
 
 #
-# * User models
+# * User controller
 # 
 setting = require '../setting'
 Dbauth = require '../lib/dbauth'
@@ -62,10 +62,21 @@ module.exports = (app) ->
         res.render 'index',
             title: setting.title
             brand: setting.brand
+    
     app.get '/user/setting',(req,res)->
+        checkLogin req,res
+        user = req.session.user
         res.render 'user/setting',
             title: setting.title
             brand: setting.brand
+            user: user
+
+    #
+    # update user settings info
+    #
+    app.post '/user/update/account',(req,res)->
+        checkLogin req,res
+
     
     checkLogin = (req,res)->
-        res.redirect '/login' if req.session.user?
+        res.redirect '/login' if not req.session.user?

@@ -10,6 +10,9 @@ userSchema = new mongoose.Schema
     index: true
     unique: true
   password: String
+  motto: 
+    type: String
+    default: ''
 module.exports = User = mongoose.model 'User', userSchema
 # save user
 User.save = (info,next)->
@@ -22,6 +25,7 @@ User::register = (info,next)->
   self.password = info.password
   self.save()
   next null,info
+
 # check user
 User.get = (user,next)->
   next 201 if not user.email?

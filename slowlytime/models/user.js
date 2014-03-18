@@ -14,7 +14,11 @@ userSchema = new mongoose.Schema({
     index: true,
     unique: true
   },
-  password: String
+  password: String,
+  motto: {
+    type: String,
+    "default": ''
+  }
 });
 
 module.exports = User = mongoose.model('User', userSchema);
