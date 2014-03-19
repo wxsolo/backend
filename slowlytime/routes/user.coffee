@@ -76,7 +76,19 @@ module.exports = (app) ->
     #
     app.post '/user/update/account',(req,res)->
         checkLogin req,res
+        args = 
+            motto: req.body.motto
+            name: req.body.name
+            email: req.session.user.email
+        User.modify args,(err,user)->
+            if user
+                req.session.user = user
+                # update success
+                status.errorCode = 203
+            else
+                # update error
+                status.errorCode = 103
+            res.json status
 
-    
     checkLogin = (req,res)->
         res.redirect '/login' if not req.session.user?

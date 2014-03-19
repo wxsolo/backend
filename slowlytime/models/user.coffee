@@ -35,3 +35,14 @@ User.get = (user,next)->
       next err,null
     else
       next err,dbUser
+# update post
+User.modify = (args,next)->
+  User.findOne({email:args.email}).exec (err,user)->
+    try
+      user.name = args.name
+      user.motto = args.motto
+      user.save()
+      next null,user
+    catch err
+      next err,null
+
