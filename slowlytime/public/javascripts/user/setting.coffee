@@ -16,17 +16,25 @@ define (require,exports,module) ->
            el.addClass('active').siblings().removeClass('active')
            $(".setting-item li[data-key='"+current+"']").addClass('show'
            ).removeClass('hide').siblings().removeClass('show').addClass('hide');
+
         updateAccount = ->
-           $nickname = $('#nickname')
-           $motto = $('#motto')
+           $nickname = $('#nickname').val()
+           $motto = $('#motto').val()
            url = '/user/update/account'
+           if not $nickname
+               errorTip 'nickname must not empty!'
+           if not $motto
+               errorTip 'motto must not empty!'
            accountInfo =
-               'name': $nickname.val()
-               'motto': $motto.val()
+               'name': $nickname
+               'motto': $motto
            $.ajax
                url: url
                type: 'post'
                data: accountInfo
                success:(msg)->
+        errorTip = (msg)->
+            alert msg
+
            
     module.exports = Setting
