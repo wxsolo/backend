@@ -21,7 +21,6 @@ module.exports = (app) ->
                 res.redirect '/login'
    
     app.post '/user/reg',(req,res)->
-        md5 = crypto.createHash('md5')
         regUser = 
           name: req.body.username
           email: req.body.email
@@ -80,6 +79,11 @@ module.exports = (app) ->
             motto: req.body.motto
             name: req.body.name
             email: req.session.user.email
+
+        # server side valide 
+        for key of args
+            return false if args[key] is ''
+
         User.modify args,(err,user)->
             if user
                 req.session.user = user
@@ -89,6 +93,18 @@ module.exports = (app) ->
                 # update error
                 status.errorCode = 103
             res.json status
+    #
+    # check password
+    #
+    app.post '/user/check/password',(req,res)->
+        checkLogin req,res
+        md5 = crypto.createHash('md5')
+        password = md5.update(req.body.password).digest('base64')
+        if password isnt req.session.user.password
+            status.errorCode = 104
+        else
+            status.errorCode = 204
+        res.json status
 
     checkLogin = (req,res)->
         res.redirect '/login' if not req.session.user?

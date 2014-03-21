@@ -28,7 +28,6 @@ User::register = (info,next)->
 
 # check user
 User.get = (user,next)->
-  next 201 if not user.email?
   User.findOne {email:user.email},(err,dbUser)->
     return next err if err
     if not dbUser?

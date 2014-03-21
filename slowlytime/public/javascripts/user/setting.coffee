@@ -11,6 +11,8 @@ define (require,exports,module) ->
                settingNav $(this)
            $('.account-update').click ->
                updateAccount()
+           $('.profile-update').click ->
+               updatePassword()
         settingNav = (el)->
            current = el.find('a').attr('data-key')
            el.addClass('active').siblings().removeClass('active')
@@ -23,8 +25,10 @@ define (require,exports,module) ->
            url = '/user/update/account'
            if not $nickname
                errorTip 'nickname must not empty!'
+               return false
            if not $motto
                errorTip 'motto must not empty!'
+               return false
            accountInfo =
                'name': $nickname
                'motto': $motto
@@ -33,8 +37,53 @@ define (require,exports,module) ->
                type: 'post'
                data: accountInfo
                success:(msg)->
+                errorTip '修改成功！'  if msg.errorCode is 203
+       
+       updatePassword = ->
+            url = '/user/update/password'
+            $email = $('#email').val()
+            $currentPwd = $('#current-password').val()
+            $newPwd = $('#new-password').val()
+            $confirmPwd = $('#confirm-password').val()
+            if not $email
+                errorTip 'email must not empty!'
+                return false
+            
+            if not checkCurrentPwd $currentPwd
+                errorTip 'current password is false'
+                return false
+            
+            if $newPwd.length < 6 and $confirmPwd.length < 6
+                errorTip 'new password is too short'
+                return false
+            if $newPwd isnt $confirmPwd
+                errorTip 'twice input password is not equal'
+                return false
+            pwdInfo = 
+                email: $email
+                pwd: $newPwd
+            $.ajax
+               url: url
+               type: 'post'
+               data: pwdInfo
+               success:(msg)->
+                errorTip '修改成功！'  if msg.errorCode is 204
+        
+        # 检测密码正确性
+        checkCurrentPwd = (pwd)->
+            url = '/user/check/password'
+            bok = false
+            $.ajax
+               url: url
+               async: false
+               type: 'post'
+               data:
+                   password: pwd
+               success:(msg)->
+                   bok  = true if msg.errorCode is 204
+            return bok
         errorTip = (msg)->
-            alert msg
+           $('.setting-tips').html msg
 
            
     module.exports = Setting
