@@ -3,15 +3,23 @@
         <li class="pull-left">
             <a href="/">最新发表</a>
         </li>
-        <li class="pull-right">
-            &nbsp
-            &nbsp
-            &nbsp
-            <a href="/reg">注册</a>
-        </li>
-        <li class="pull-right">
-            <a href="/login">登录</a>
-        </li>
+        {{ if(user) {  }}
+            <li class="pull-right">
+              <div class="setting-toggle">
+                <a href="/user/setting">{{= user.name }}</a>
+              </div>
+            </li>
+        {{  } else {  }}
+            <li class="pull-right">
+                &nbsp
+                &nbsp
+                &nbsp
+                <a href="/reg">注册</a>
+            </li>
+            <li class="pull-right">
+                <a href="/login">登录</a>
+            </li>
+        {{  } }}
     </ul>
 </div>
 

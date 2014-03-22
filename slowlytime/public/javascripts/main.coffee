@@ -4,6 +4,8 @@ define (require,exports,module)->
     Login = require './user/login'
     Setting = require './user/setting'
     scroll = require './scroll'
+    $ = require '$'
+    bootstrap = require 'bootstrap'
     scroll()
     router = new Router()
 

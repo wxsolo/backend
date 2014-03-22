@@ -1,5 +1,5 @@
 <div class="well header">
-    <div class="brand">Slowlytime</div>
+    <div class="brand">{{= brand}}</div>
     <div class="description">
       在这个浮躁的世界，给心灵一块驻足之地 
     </div>
@@ -7,12 +7,20 @@
         <li>
             <a href="/">最新发表</a>
         </li>
-        <li class="pull-right">
-            <a href="/reg">注册</a>
-        </li>
-        <li class="pull-right">
-            <a href="/login">登录</a>
-        </li>
+        {{ if(user) {  }}
+            <li class="pull-right">
+              <div class="setting-toggle">
+                <a href="/user/setting">{{= user.name }}</a>
+              </div>
+            </li>
+        {{  } else {  }}
+            <li class="pull-right">
+                <a href="/reg">注册</a>
+            </li>
+            <li class="pull-right">
+                <a href="/login">登录</a>
+            </li>
+        {{  } }}
    </ul>
    <div class="clear"></div>
 </div>

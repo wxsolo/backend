@@ -62,6 +62,7 @@ module.exports = (app) ->
         res.render 'user/index',
             title: setting.title
             brand: setting.brand
+            user: req.session.user
     
     app.get '/user/setting',(req,res)->
         checkLogin req,res
@@ -128,7 +129,6 @@ module.exports = (app) ->
                 # update error
                 status.errorCode = 104
             res.json status
-
 
     checkLogin = (req,res)->
         res.redirect '/login' if not req.session.user?

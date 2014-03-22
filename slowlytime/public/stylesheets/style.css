@@ -23,7 +23,6 @@ body {
 }
 .header .nav-main {
   width: 50%;
-  background: #f00;
   text-aligin: center;
   margin: 0 auto;
 }
@@ -35,6 +34,10 @@ body {
 }
 .header .nav-main a {
   color: #fff;
+}
+.header .nav-main .setting-toggle {
+  color: #fff;
+  cursor: pointer;
 }
 .lgnav {
   width: 100%;

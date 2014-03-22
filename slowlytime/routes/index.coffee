@@ -11,6 +11,7 @@ module.exports = (app) ->
         res.render 'index',
             title: setting.title
             brand: setting.brand
+            user: req.session.user
 
     app.get '/login',(req,res)->
         res.render 'login',
