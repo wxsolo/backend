@@ -9,20 +9,20 @@ define (require,exports,module) ->
         events = ->
            $('.setting-nav li').click ->
                settingNav $(this)
+           $('.profile-update').click ->
+               updateProfile()
            $('.account-update').click ->
                updateAccount()
-           $('.profile-update').click ->
-               updatePassword()
         settingNav = (el)->
            current = el.find('a').attr('data-key')
            el.addClass('active').siblings().removeClass('active')
            $(".setting-item li[data-key='"+current+"']").addClass('show'
            ).removeClass('hide').siblings().removeClass('show').addClass('hide');
 
-        updateAccount = ->
+        updateProfile = ->
            $nickname = $('#nickname').val()
            $motto = $('#motto').val()
-           url = '/user/update/account'
+           url = '/user/update/profile'
            if not $nickname
                errorTip 'nickname must not empty!'
                return false
@@ -39,8 +39,8 @@ define (require,exports,module) ->
                success:(msg)->
                 errorTip '修改成功！'  if msg.errorCode is 203
        
-       updatePassword = ->
-            url = '/user/update/password'
+       updateAccount = ->
+            url = '/user/update/account'
             $email = $('#email').val()
             $currentPwd = $('#current-password').val()
             $newPwd = $('#new-password').val()
@@ -61,7 +61,7 @@ define (require,exports,module) ->
                 return false
             pwdInfo = 
                 email: $email
-                pwd: $newPwd
+                password: $newPwd
             $.ajax
                url: url
                type: 'post'

@@ -21,6 +21,7 @@ module.exports = (app) ->
                 res.redirect '/login'
    
     app.post '/user/reg',(req,res)->
+        md5 = crypto.createHash('md5')
         regUser = 
           name: req.body.username
           email: req.body.email
@@ -73,7 +74,7 @@ module.exports = (app) ->
     #
     # update user settings info
     #
-    app.post '/user/update/account',(req,res)->
+    app.post '/user/update/profile',(req,res)->
         checkLogin req,res
         args = 
             motto: req.body.motto
@@ -105,6 +106,28 @@ module.exports = (app) ->
         else
             status.errorCode = 204
         res.json status
+
+    app.post '/user/update/account',(req,res)->
+        checkLogin req,res
+        md5 = crypto.createHash('md5')
+        args = 
+            password: md5.update(req.body.password).digest('base64')
+            email: req.body.email
+
+        # server side valide 
+        for key of args
+            return false if args[key] is ''
+
+        User.modify args,(err,user)->
+            if user
+                req.session.user = user
+                # update success
+                status.errorCode = 204
+            else
+                # update error
+                status.errorCode = 104
+            res.json status
+
 
     checkLogin = (req,res)->
         res.redirect '/login' if not req.session.user?
