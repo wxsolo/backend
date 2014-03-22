@@ -1,6 +1,9 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+#brand {
+  margin: 0 0 0 40px;
+}
 #main {
   min-height: 600px;
   margin: 70px 0 0 0;
@@ -72,4 +75,7 @@ body {
 }
 .hide {
   display: none;
+}
+.clear {
+  clear: both;
 }
