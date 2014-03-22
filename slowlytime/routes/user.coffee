@@ -59,13 +59,14 @@ module.exports = (app) ->
 
     app.get '/user',(req,res)->
         checkLogin req,res
-        res.render 'index',
+        res.render 'user/index',
             title: setting.title
             brand: setting.brand
     
     app.get '/user/setting',(req,res)->
         checkLogin req,res
         user = req.session.user
+        user.motto = '' if user.motto is undefined
         res.render 'user/setting',
             title: setting.title
             brand: setting.brand

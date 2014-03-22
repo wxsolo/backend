@@ -3,7 +3,8 @@ define (require,exports,module)->
     Register = require './user/register'
     Login = require './user/login'
     Setting = require './user/setting'
-
+    scroll = require './scroll'
+    scroll()
     router = new Router()
 
     router.on 'reg',(err,current)->

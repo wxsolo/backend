@@ -1,15 +1,64 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "jaf-bernino-sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Geneva", "Verdana", "sans-serifLucida Grande", "Helvetica", "Arial", "sans-serif";
+  padding: 0;
+  margin: 0;
 }
-#brand {
-  margin: 0 0 0 40px;
+.header {
+  background: #08c;
+  width: 100%;
+}
+.header .brand {
+  color: #fff;
+  padding: 80px 0 0 0;
+  margin: 80 auto;
+  text-align: center;
+  font-size: 50px;
+}
+.header .description {
+  color: #fff;
+  margin: 15px auto;
+  text-align: center;
+  font-size: 22px;
+  padding: 0 0 40px 0;
+}
+.header .nav-main {
+  width: 50%;
+  background: #f00;
+  text-aligin: center;
+  margin: 0 auto;
+}
+.header .nav-main li {
+  float: left;
+  display: inline;
+  margin: 0 0 0 20px;
+  font-size: 18px;
+}
+.header .nav-main a {
+  color: #fff;
+}
+.lgnav {
+  width: 100%;
+  height: 50px;
+  background: #08c;
+  line-height: 50px;
+}
+.lgnav .lgnav-header {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+}
+.lgnav li {
+  list-style: none;
+  font-size: 18px;
+}
+.lgnav li a {
+  color: #fff;
 }
 #main {
   min-height: 600px;
-  margin: 70px 0 0 0;
 }
 .login {
-  margin: 10px auto;
+  margin: 100px auto;
   max-width: 330px;
 }
 .login .form-signin-heading a {
@@ -36,7 +85,7 @@ body {
   line-height: 18px;
 }
 .reg {
-  margin: 10px auto;
+  margin: 100px auto;
   max-width: 330px;
 }
 .reg .form-regin-heading a {
@@ -63,10 +112,13 @@ body {
   margin: 15px 0 0 0;
   text-aligin: center;
 }
-.setting-item {
+.setting-content {
+  margin: 15px 0 0 0;
+}
+.setting-content .setting-item {
   list-style: none;
 }
-.setting-item li {
+.setting-content .setting-item li {
   min-height: 100px;
   margin: 40px 0 0 -40px;
 }
@@ -78,4 +130,7 @@ body {
 }
 .clear {
   clear: both;
+}
+.page-brand {
+  font-size: 50px;
 }
