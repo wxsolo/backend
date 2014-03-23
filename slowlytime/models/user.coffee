@@ -13,6 +13,9 @@ userSchema = new mongoose.Schema
   motto: 
     type: String
     default: ''
+  gravatar:
+    type: String
+    default: './upload/images/default.png' 
 module.exports = User = mongoose.model 'User', userSchema
 # save user
 User.save = (info,next)->
