@@ -30,15 +30,15 @@ module.exports = (app) ->
             if user?
                 status.errorCode = 101
                 res.json status
-                return false
-            User.save regUser,(err,info)->
-                if err
-                    status.errorCode = 102
-                    res.json status
-                else
-                    status.errorCode = 201
-                    req.session.user = info
-                    res.json status
+            else
+                User.save regUser,(err,info)->
+                    if err
+                        status.errorCode = 102
+                        res.json status
+                    else
+                        status.errorCode = 201
+                        req.session.user = info
+                        res.json status
     
     app.post '/user/login',(req,res)->
         md5 = crypto.createHash('md5')
@@ -57,7 +57,7 @@ module.exports = (app) ->
                 status.errorCode = 202
             res.json status
 
-    app.get '/user',(req,res)->
+    app.get '/user/profile/:id',(req,res)->
         checkLogin req,res
         res.render 'user/index',
             title: setting.title
@@ -67,6 +67,7 @@ module.exports = (app) ->
     app.get '/user/setting',(req,res)->
         checkLogin req,res
         user = req.session.user
+        console.log user
         user.motto = '' if user.motto is undefined
         res.render 'user/setting',
             title: setting.title

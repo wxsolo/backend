@@ -24,7 +24,7 @@ User::register = (info,next)->
   self.email = info.email
   self.password = info.password
   self.save()
-  next null,info
+  next null,self
 
 # check user
 User.get = (user,next)->

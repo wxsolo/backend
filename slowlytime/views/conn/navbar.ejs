@@ -10,7 +10,7 @@
         {{ if(user) {  }}
             <li class="pull-right">
               <div class="setting-toggle">
-                <a href="/user/setting">{{= user.name }}</a>
+                <a href="/user/profile/{{= user._id}}">{{= user.name }}</a>
               </div>
             </li>
         {{  } else {  }}
