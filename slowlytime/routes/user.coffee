@@ -119,7 +119,7 @@ module.exports = (app) ->
 
         # server side valide 
         for key of args
-            return false if args[key] is ''
+            return  if args[key] is ''
 
         User.modify args,(err,user)->
             if user

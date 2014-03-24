@@ -1,0 +1,11 @@
+{
+    "status_code":{
+        101: 'user is already exist',
+        102: "",
+        103: "user is not exist",
+        104: "user name or password error",
+        201: "register success",
+        203: "update profile success",
+        204: "update account success"
+    }
+}
