@@ -23,10 +23,33 @@ module.exports = (app) ->
     app.post '/user/reg',(req,res)->
         md5 = crypto.createHash('md5')
         regUser = 
+          id: ''
           name: req.body.username
           email: req.body.email
           password: md5.update(req.body.password).digest('base64')
-        User.get regUser,(err,user)->
+          gravator: ''
+          gender: ''
+          ctime: new Date()
+
+        User.get regUser, (err,user) ->
+            if user
+                status.errorCode = 101
+                res.json status
+            else
+                User.register regUser, (err,user) ->
+                    if err
+                        status.errorCode = 102
+                        res.json status
+                    else
+                        status.errorCode = 201
+                        req.session.user = 
+                            id: user.insertId
+                            name: regUser.name
+                            email: regUser.email
+                            gravator: regUser.gravator
+                        res.json status
+                
+        ###User.get regUser,(err,user)->
             if user?
                 status.errorCode = 101
                 res.json status
@@ -39,7 +62,7 @@ module.exports = (app) ->
                         status.errorCode = 201
                         req.session.user = info
                         res.json status
-    
+        ### 
     app.post '/user/login',(req,res)->
         md5 = crypto.createHash('md5')
         loginInfo =
