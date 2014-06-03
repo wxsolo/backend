@@ -25,11 +25,12 @@ define (require,exports,module)->
         checkInvalid = (data) ->
           if data.username.length < 4
             Kit.errorTip $errorTip,'用户名不得小于四位!','show'
+            bok = false 
           else if not Kit.isValidEmail data.email
             Kit.errorTip $errorTip,'邮箱不合法!','show'
             bok = false 
           else if data.password.length < 6
-            kit.errorTip $errorTip,'密码不得小于六位!','show'
+            Kit.errorTip $errorTip,'密码不得小于六位!','show'
             bok = false
           else
             bok = true
@@ -38,7 +39,7 @@ define (require,exports,module)->
             Kit.redirect '/user'
             return false
           if msg.errorCode is 101
-            Kit.errorTip $errorTip,'用户名已经存在!','show'
+            Kit.errorTip $errorTip,'邮箱已经存在!','show'
         doRegister = ->
           data =
             username: $uname.val()

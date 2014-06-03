@@ -32,7 +32,8 @@ module.exports = (app) ->
           ctime: new Date()
 
         User.get regUser, (err,user) ->
-            if user
+            # 判断用户是否存在
+            if user.length > 0
                 status.errorCode = 101
                 res.json status
             else
@@ -69,14 +70,14 @@ module.exports = (app) ->
             email: req.body.email
             password: md5.update(req.body.password).digest('base64')
         User.get loginInfo,(err,user)->
-            if not user?
+            if user.length == 0
                 status.errorCode = 103
-            else if loginInfo.password isnt user.password
+            else if loginInfo.password isnt user[0].password
                 #104 means user password is error
                 status.errorCode = 104
             else
                 # login success
-                req.session.user = user
+                req.session.user = user[0]
                 status.errorCode = 202
             res.json status
 

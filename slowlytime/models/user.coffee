@@ -8,12 +8,12 @@ User =
             next err, null if err
             next null, result
     get: (info,next) ->
-        connection.query "SELECT id FROM user WHERE email = ?",[info.email],(err,result) ->
+        connection.query "SELECT id,name,gravator,password,email FROM user WHERE email = ?", [info.email], (err,result) ->
             if err
                 next err, null
-            else 
-                flag = result.length > 0 ? false : true
-                next null, flag
+            else
+                next null, result
+
 module.exports = User
 # save user
 ###User.save = (info,next)->

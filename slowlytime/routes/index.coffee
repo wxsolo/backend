@@ -8,6 +8,7 @@ request = require 'request'
 module.exports = (app) ->
     
     app.get '/',(req,res)->
+        console.log req.session.user
         res.render 'index',
             title: setting.title
             brand: setting.brand
