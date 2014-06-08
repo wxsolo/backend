@@ -12,6 +12,6 @@
     "request": "*",
     "async": "*",
     "mongoose": "*",
-    "mysql": "*"
+    "easymysql": "*"
   }
 }

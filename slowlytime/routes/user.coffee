@@ -83,7 +83,7 @@ module.exports = (app) ->
 
     app.get '/user/profile/:id',(req,res)->
         checkLogin req,res
-        res.render 'user/index',
+        res.render 'peope/index',
             title: setting.title
             brand: setting.brand
             user: req.session.user
@@ -93,7 +93,7 @@ module.exports = (app) ->
         user = req.session.user
         console.log user
         user.motto = '' if user.motto is undefined
-        res.render 'user/setting',
+        res.render 'people/setting',
             title: setting.title
             brand: setting.brand
             user: user
@@ -104,6 +104,7 @@ module.exports = (app) ->
     app.post '/user/update/profile',(req,res)->
         checkLogin req,res
         args = 
+            id: req.session.user.id
             motto: req.body.motto
             name: req.body.name
             email: req.session.user.email
@@ -111,9 +112,9 @@ module.exports = (app) ->
         # server side valide 
         for key of args
             return false if args[key] is ''
-
         User.modify args,(err,user)->
             if user
+                user.password = req.session.user.password
                 req.session.user = user
                 # update success
                 status.errorCode = 203
@@ -146,6 +147,7 @@ module.exports = (app) ->
             return  if args[key] is ''
 
         User.modify args,(err,user)->
+
             if user
                 req.session.user = user
                 # update success
