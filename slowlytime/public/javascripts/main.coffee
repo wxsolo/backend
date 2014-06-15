@@ -3,6 +3,7 @@ define (require,exports,module)->
     Register = require './user/register'
     Login = require './user/login'
     Setting = require './user/setting'
+    Main = require './book/main'
     scroll = require './scroll'
     $ = require '$'
     bootstrap = require 'bootstrap'
@@ -18,3 +19,6 @@ define (require,exports,module)->
     router.on 'user',(err,current)->
         if current
             new Setting()
+    router.on 'upload',(err,current)->
+        if current
+            new Main()

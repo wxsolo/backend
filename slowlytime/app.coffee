@@ -6,6 +6,7 @@ express = require("express")
 routes = require("./routes")
 user = require("./routes/user")
 people = require("./routes/people")
+book = require("./routes/book")
 http = require("http")
 path = require("path")
 ejs = require("ejs")
@@ -37,3 +38,4 @@ http.createServer(app).listen app.get("port"), ->
 routes app
 user app
 people app
+book app

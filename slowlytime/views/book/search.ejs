@@ -1,0 +1,38 @@
+{{- include ../conn/header}}
+{{- include ../conn/lgbar}}
+<div  class="content row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 row">
+        <form action="/book/search" method="get" class="form-horizontal form">
+            <div class="form-group row">
+                <input type="text" class="form-control pull-left bk-search" name="title" value="" id="bk-search">
+                <input type="submit" class="btn pull-right btn-primary save" value="搜索" />
+            </div>
+        </form>
+        <p class="bk-info">{{= pages }} 共{{=total}}</p>
+        <ul class="bk-list">
+            {{ books.forEach(function(book) { }}
+                <li>
+                    <img src="{{= book.image }}" class="" alt="">
+                    <div class="content">
+                        <p><a href="/book/detail/{{=book.isbn13}}">{{= book.title }}</a></p>
+                        <p>{{= book.author }}</p>
+                        <p>{{= book.price }}</p>
+                        <p>{{= book.pages }}</p>
+                        <p>{{= book.publisher }}</p>
+                    </div>
+                    <div class="clear">
+                    </div>
+                </li>
+            {{  }) }}
+        </ul>
+        <ul class="pagination">
+            {{ for(var i= 1 ; i<= pages; i++) {  }}
+                <li><a class="item" href="/book/search?title={{=keywords}}&start={{=i-1}}">{{=i}}</a></li>
+            {{  } }}
+        </ul>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+{{- include ../conn/footer}}

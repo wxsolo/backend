@@ -26,7 +26,7 @@ User =
                                # set password of args
                                next null, args
                         else
-                           db.query "UPDATE user SET passwod = ?,email = ? WHERE email = ?", [args.password,args.email,result[0].email],(err,result) ->
+                           db.query "UPDATE user SET password = ?,email = ? WHERE email = ?", [args.password, args.email, result[0].email],(err,result) ->
                                throw err if err
                                # set password of args
                                next null, args

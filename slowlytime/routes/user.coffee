@@ -19,7 +19,7 @@ module.exports = (app) ->
                 res.json data
             else
                 res.redirect '/login'
-   
+
     app.post '/user/reg',(req,res)->
         md5 = crypto.createHash('md5')
         regUser = 
@@ -141,6 +141,10 @@ module.exports = (app) ->
         args = 
             password: md5.update(req.body.password).digest('base64')
             email: req.body.email
+            id: req.session.user.id
+            motto: req.session.user.motto
+            name: req.session.user.name
+
 
         # server side valide 
         for key of args

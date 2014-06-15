@@ -147,3 +147,27 @@ body {
 .page-brand {
   font-size: 50px;
 }
+.bk-search {
+  width: 595px;
+}
+.bk-list {
+  list-style: none;
+}
+.bk-list li {
+  list-style: none;
+  border-bottom: 1px dotted #808080;
+  padding: 5px;
+  margin: 0 0 0 -50px;
+}
+.bk-list li img {
+  float: left;
+}
+.bk-list li .content {
+  float: right;
+  width: 430px;
+}
+.bk-info {
+  text-align: right;
+  border-bottom: 1px dotted #808080;
+  margin: 0 0 0 -10px;
+}
