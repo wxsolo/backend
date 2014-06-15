@@ -1,5 +1,6 @@
 setting = require '../setting'
 Book = require '../lib/book'
+BookModel = require '../models/book'
 request = require 'request'
 module.exports = (app) ->
     
@@ -28,4 +29,33 @@ module.exports = (app) ->
                     user: req.session.user
                     book: data
 
+    app.get '/book/collection/:isbn',(req,res)->
+        info =
+            isbn: req.params.isbn
+            uid: req.session.user.id
+            stime: new Date()
+        BookModel.getCollection info,(err,result)->
+            if result.length > 0
+                res.redirect '/people/' + info.uid
+            else
+                book = new Book info
+                book.detail (err,data) ->
+                    bkDetail =
+                        title: data.title
+                        isbn: data.isbn13
+                        author: data.author
+                        image: data.image
+                        summary: data.summary || ''
+                        price: data.price
+                        pages: data.pages
+                        publisher: data.publisher
+                        ctime: new Date()
+                    BookModel.add bkDetail,(err,result) ->
+                        if err
+                            console.log err
+                        else
+                            BookModel.addCollection info,(err,result)->
+                                res.redirect '/people/' + info.uid
+
+        
 
