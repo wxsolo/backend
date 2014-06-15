@@ -10,13 +10,41 @@ status = {}
 module.exports = (app) ->
     
     app.get '/user/auth/douban',(req,res)->
-        res.redirect 'https://www.douban.com/service/auth2/auth?response_type=code&client_id='+setting.douban_auth.client_id+'&redirect_uri='+setting.douban_auth.dev_host+'user/callback'
+        res.redirect 'https://www.douban.com/service/auth2/auth?response_type=code&client_id='+setting.douban_auth.client_id+'&redirect_uri='+setting.douban_auth.dev_host+'user/douban/callback'
     
-    app.get '/user/callback',(req,res)->
+    app.get '/user/douban/callback',(req,res)->
         auth = new Dbauth req.url
         auth.getUserInfo (err,data)->
             if not err
-                res.json data
+                newUser = 
+                    id: ''
+                    name: data.name
+                    gravator: data.avatar
+                    gender: ''
+                    motto: data.desc
+                    location: data.loc_name
+                    douban: data.id
+                    ctime: new Date()
+                User.get newUser, (err,user) ->
+                    if user.length > 0
+                        req.session.user = 
+                            id: user[0].id
+                            name: user[0].name
+                            gravator: user[0].gravator
+                            motto: user[0].motto
+                        res.redirect '/'
+                    else
+                        User.register newUser, (err,user) ->
+                            if err
+                                console.log err
+                            else
+                                 console.log user
+                                 req.session.user = 
+                                    id: user.insertId
+                                    name: newUser.name
+                                    gravator: newUser.gravator
+                                    motto: newUser.motto
+                                 res.redirect '/'
             else
                 res.redirect '/login'
 

@@ -7,20 +7,23 @@ setting = require '../setting'
 request = require 'request'
 module.exports = (app) ->
     
-    app.get '/',(req,res)->
+    app.get '/',(req,res) ->
         console.log req.session.user
         res.render 'index',
             title: setting.title
             brand: setting.brand
             user: req.session.user
 
-    app.get '/login',(req,res)->
+    app.get '/login',(req,res) ->
         res.render 'login',
             title: setting.title
             brand: setting.brand
 
-    app.get '/reg',(req,res)->
+    app.get '/reg',(req,res) ->
         res.render 'reg',
             title: setting.title
             brand: setting.brand
+    app.get '/logout',(req,res) ->
+        req.session.user = null
+        res.redirect '/'
 

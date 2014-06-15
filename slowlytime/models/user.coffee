@@ -7,7 +7,7 @@ User =
             next err, null if err
             next null, result
     get: (info,next) ->
-        db.query "SELECT id,name,gravator,password,email FROM user WHERE email = ?", [info.email], (err,result) ->
+        db.query "SELECT id,name,gravator,motto FROM user WHERE douban = ?", [info.douban], (err,result) ->
             if err
                 next err, null
             else

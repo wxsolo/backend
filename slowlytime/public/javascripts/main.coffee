@@ -7,7 +7,7 @@ define (require,exports,module)->
     scroll = require './scroll'
     $ = require '$'
     bootstrap = require 'bootstrap'
-    scroll()
+    #scroll()
     router = new Router()
 
     router.on 'reg',(err,current)->

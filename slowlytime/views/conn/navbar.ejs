@@ -1,22 +1,29 @@
 <div class="well header">
-    <div class="brand">{{= brand}}</div>
-    <div class="description">
-      在这个浮躁的世界，给心灵一块驻足之地 
+    <div class="brand row">
+        <div class="pull-left">
+            <a href="/" class="navbar-brand">{{= brand}}</a>
+        </div>
+        <form action="/book/search" method="get" class=" pull-right form-horizontal form">
+            <input type="text" name="title" class="form-control  search" value="" placeholder="书名">
+        </form>
     </div>
    <ul class="nav-main">
         <li>
-            <a href="/">最新发表</a>
+            <a href="/">热门图书</a>
         </li>
+        <li>
+            <a href="/">热门用户</a>
+        </li>
+
         {{ if(user) {  }}
             <li class="pull-right">
               <div class="setting-toggle">
+                <a href="/people/{{= user.id}}"><img src="{{= user.gravator }}" height="28" width="28" /></a>
                 <a href="/people/{{= user.id}}">{{= user.name }}</a>
+                <a href="/logout">退出</a>
               </div>
             </li>
         {{  } else {  }}
-            <li class="pull-right">
-                <a href="/reg">注册</a>
-            </li>
             <li class="pull-right">
                 <a href="/login">登录</a>
             </li>

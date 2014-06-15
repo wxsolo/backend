@@ -27,8 +27,5 @@ module.exports = (app) ->
                     brand: setting.brand
                     user: req.session.user
                     book: data
-    
-
-       
 
 
