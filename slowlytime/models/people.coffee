@@ -3,7 +3,16 @@ db = require '../lib/mysql'
 
 People = 
     get: (id,next) ->
-        db.query "SELECT id,name,gravator,email FROM user WHERE id = ?", [id], (err,result) ->
+        db.query "SELECT id,name,gravator FROM user WHERE id = ?", [id], (err,result) ->
+            if err
+                next err, null
+            else
+                next null, result
+    getRead: (uid,next) ->
+        sql =  "SELECT b.title,b.isbn,b.author,b.image,b.pages,b.publisher,c.status
+                FROM books AS b LEFT JOIN collection AS c 
+                ON c.isbn = b.isbn AND c.uid = ? ORDER BY c.ctime DESC"
+        db.query sql,[uid],(err,result) ->
             if err
                 next err, null
             else

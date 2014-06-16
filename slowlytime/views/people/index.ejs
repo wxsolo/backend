@@ -1,3 +1,42 @@
 {{- include ../conn/header}}
 {{- include ../conn/navbar}}
+<div id="main" class="content row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="user-info">
+            <p>{{= people.name }}</p>
+            <a href="/people/{{= people.id}}" ><img src="{{=people.gravator}}"> </a>
+        </div>
+        <h3>收藏</h3>
+        <ul>
+            {{ books.collection.forEach(function(book) { }}
+                <li>
+                    <p>{{= book.title}}</p>
+                    <img src="{{= book.image}}" />
+                </li>
+            {{  }) }}
+        </ul>
+        <h3>在读</h3>
+        <ul>
+            {{ books.reading.forEach(function(book) { }}
+                <li>
+                    <p>{{= book.title}}</p>
+                    <img src="{{= book.image}}" />
+                </li>
+            {{  }) }}
+        </ul>
+        <h3>已读</h3>
+        <ul>
+            {{ books.readed.forEach(function(book) { }}
+                <li>
+                    <p>{{= book.title}}</p>
+                    <img src="{{= book.image}}" />
+                </li>
+            {{  }) }}
+        </ul>
+
+    </div>
+    <div class="col-md-6">
+    </div>
+</div>
 {{- include ../conn/footer}}

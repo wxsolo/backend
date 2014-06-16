@@ -29,11 +29,12 @@ module.exports = (app) ->
                     user: req.session.user
                     book: data
 
-    app.get '/book/collection/:isbn',(req,res)->
+    app.get '/book/collection/:isbn/:status',(req,res)->
         info =
             isbn: req.params.isbn
+            status: req.params.status
             uid: req.session.user.id
-            stime: new Date()
+            ctime: new Date()
         BookModel.getCollection info,(err,result)->
             if result.length > 0
                 res.redirect '/people/' + info.uid
@@ -41,15 +42,16 @@ module.exports = (app) ->
                 book = new Book info
                 book.detail (err,data) ->
                     bkDetail =
-                        title: data.title
-                        isbn: data.isbn13
-                        author: data.author
+                        title: data.title || ''
+                        isbn: data.isbn13 
+                        author: data.author || ''
                         image: data.image
                         summary: data.summary || ''
                         price: data.price
                         pages: data.pages
-                        publisher: data.publisher
+                        publisher: data.publisher || ''
                         ctime: new Date()
+                    console.log bkDetail
                     BookModel.add bkDetail,(err,result) ->
                         if err
                             console.log err

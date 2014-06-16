@@ -15,7 +15,9 @@
                         <p>{{= book.price }}</p>
                         <p>{{= book.pages }}</p>
                         <p>{{= book.publisher }}</p>
-                        <a class="btn btn-primary" href="/book/collection/{{= book.isbn13}}" >收藏</buttion></a>
+                        <a class="btn btn-primary" href="/book/collection/{{= book.isbn13}}/0" >收藏</buttion></a>
+                        <a class="btn btn-primary" href="/book/collection/{{= book.isbn13}}/1" >在读</buttion></a>
+                        <a class="btn btn-primary" href="/book/collection/{{= book.isbn13}}/2" >读过</buttion></a>
                     </div>
                     <div class="clear">
                     </div>
