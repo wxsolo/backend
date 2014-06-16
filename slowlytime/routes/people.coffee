@@ -15,11 +15,11 @@ module.exports = (app) ->
                 reading: []
                 readed: []
             People.getCollection req.params.id,1,(err,collection)->
-                books.collection = collection.books
+                books.collection = collection
                 People.getDo req.params.id,1,(err,reading)->
-                    books.reading = reading.books
+                    books.reading = reading
                     People.getReaded req.params.id,1,(err,readed)->
-                        books.readed = readed.books
+                        books.readed = readed
                         res.render 'people/index',
                             title: setting.title
                             brand: setting.brand
@@ -33,4 +33,19 @@ module.exports = (app) ->
         else
             start = req.query.start
         People.getCollection req.params.id,start,(err,collection)->
+            res.json collection
+    app.get '/people/:id/do',(req,res) ->
+        if not req.query.start
+            start = 1
+        else
+            start = req.query.start
+        People.getDo req.params.id,start,(err,collection)->
+            res.json collection
+    
+    app.get '/people/:id/readed',(req,res) ->
+        if not req.query.start
+            start = 1
+        else
+            start = req.query.start
+        People.getReaded req.params.id,start,(err,collection)->
             res.json collection

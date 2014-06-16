@@ -30,7 +30,6 @@ People =
                 next null,data
     
     __getData: (uid,start,status,next) ->
-
         sql = "SELECT COUNT(id) AS total FROM collection WHERE uid  = ? AND status = ?"
         offset =  (start - 1) * pagesize
         db.query sql,[uid,status],(err,result) ->
@@ -40,8 +39,8 @@ People =
 
             sql =  "SELECT b.title,(SELECT COUNT(id) FROM collection WHERE c.uid  = ? AND c.status = 0) AS total,b.isbn,b.author,b.image,b.pages,b.publisher,c.status
                     FROM books AS b,collection AS c 
-                    WHERE c.isbn = b.isbn AND c.uid = ? AND c.status = 2  ORDER BY c.ctime DESC LIMIT ?,?"
-            db.query sql,[uid,uid,offset,pagesize],(err,books) ->
+                    WHERE c.isbn = b.isbn AND c.uid = ? AND c.status = ?  ORDER BY c.ctime DESC LIMIT ?,?"
+            db.query sql,[uid,uid,status,offset,pagesize],(err,books) ->
                 if err
                     next err, null
                 else
