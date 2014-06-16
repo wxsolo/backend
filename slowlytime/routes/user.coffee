@@ -17,7 +17,6 @@ module.exports = (app) ->
         auth.getUserInfo (err,data)->
             if not err
                 newUser = 
-                    id: ''
                     name: data.name
                     gravator: data.avatar
                     gender: ''
