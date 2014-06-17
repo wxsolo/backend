@@ -12,6 +12,13 @@ User =
                 next err, null
             else
                 next null, result
+    getHot: (next) ->
+        sql = "SELECT gravator,id FROM user"
+        db.query sql,(err,result) ->
+            if err
+                next err, null
+            else
+                next null, result
     # TODO 抽象modify 对象
     modify: (args,next)->
         @.get args, (err,result) ->
