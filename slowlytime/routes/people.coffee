@@ -49,3 +49,5 @@ module.exports = (app) ->
             start = req.query.start
         People.getReaded req.params.id,start,(err,collection)->
             res.json collection
+        
+

@@ -7,6 +7,7 @@ routes = require("./routes")
 user = require("./routes/user")
 people = require("./routes/people")
 book = require("./routes/book")
+contact = require("./routes/contact")
 http = require("http")
 path = require("path")
 ejs = require("ejs")
@@ -39,3 +40,4 @@ routes app
 user app
 people app
 book app
+contact app

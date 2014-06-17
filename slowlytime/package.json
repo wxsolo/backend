@@ -12,6 +12,7 @@
     "request": "*",
     "async": "*",
     "mongoose": "*",
-    "mysql": "*"
+    "mysql": "*",
+    "weibo": "*"
   }
 }

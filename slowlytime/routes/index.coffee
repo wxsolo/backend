@@ -29,3 +29,8 @@ module.exports = (app) ->
         req.session.user = null
         res.redirect '/'
 
+    app.get '/404',(req,res) ->
+        res.render '404'
+    
+    app.get '/document',(req,res) ->
+        res.render 'document'
