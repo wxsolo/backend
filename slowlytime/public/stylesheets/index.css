@@ -21,3 +21,53 @@ body {
 #main .loginby a {
   margin-left: 10px;
 }
+.active-men {
+  height: 360px;
+  width: 800px;
+  margin-top: 30px;
+  background: #eee;
+  margin: 20px auto;
+}
+.active-men ul {
+  width: 225px;
+  height: 360px;
+  padding-left: 0px;
+  float: left;
+  list-style: none;
+}
+.active-men ul li {
+  width: 62px;
+  height: 62px;
+  border-radius: 31px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  float: left;
+  background-color: #fff;
+}
+.active-men ul li a {
+  width: 64px;
+  height: 64px;
+  display: block;
+  position: relative;
+}
+.active-men ul li a img {
+  width: 50px;
+  height: 50px;
+  margin: 6px 6px;
+  border-radius: 25px;
+  transition: 0.05s all ease-in-out;
+}
+.active-men ul li:hover a img {
+  width: 62px;
+  height: 62px;
+  margin: 0 0;
+  border-radius: 31px;
+}
+.active-men .active-content {
+  width: 500px;
+  height: 350px;
+  float: left;
+  margin: 0px 25px;
+  border-radius: 5px;
+  background-color: #fff;
+}
