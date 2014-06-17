@@ -62,9 +62,6 @@ body {
 .lgnav li a {
   color: #fff;
 }
-#main {
-  min-height: 600px;
-}
 .search {
   width: 300px;
 }

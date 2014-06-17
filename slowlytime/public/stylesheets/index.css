@@ -1,4 +1,23 @@
+body {
+  background-color: #f1f5f8;
+}
 #main {
+  height: 360px;
   text-align: center;
-  background-color: #eee;
+  background-color: #000;
+  color: #fff;
+}
+#main h1 {
+  font-size: 70px;
+  margin-top: 70px;
+}
+#main p {
+  font-size: 25px;
+  margin-top: 20px;
+}
+#main .loginby {
+  margin-top: 40px;
+}
+#main .loginby a {
+  margin-left: 10px;
 }
