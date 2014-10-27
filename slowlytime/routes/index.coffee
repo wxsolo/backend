@@ -15,7 +15,7 @@ module.exports = (app) ->
                 brand: setting.brand
                 user: req.session.user
                 peoples: peoples
-
+    
     app.get '/login',(req,res) ->
         res.render 'login',
             title: setting.title

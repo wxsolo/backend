@@ -15,7 +15,7 @@ define (require,exports,module) ->
         doSearch = ->
             bkList.html ''
             data =
-                'title': context.val()
+                'title': encodeURIComponent context.val()
             $.ajax
               url: urls
               type: 'post'

@@ -2,6 +2,7 @@ setting = require '../setting'
 Book = require '../lib/book'
 BookModel = require '../models/book'
 request = require 'request'
+oauth = require '../lib/oauth'
 module.exports = (app) ->
     
     app.get '/book/search',(req,res) ->
@@ -30,6 +31,9 @@ module.exports = (app) ->
                     book: data
 
     app.get '/book/collection/:isbn/:status',(req,res)->
+        if not oauth.isLogin(req)
+          res.redirect('/login')
+          return
         info =
             isbn: req.params.isbn
             status: req.params.status
@@ -44,20 +48,17 @@ module.exports = (app) ->
                     bkDetail =
                         title: data.title || ''
                         isbn: data.isbn13 
-                        author: data.author || ''
-                        image: data.image
-                        summary: data.summary || ''
+                        author: data.author.toString()
+                        image: data.image.toString()
+                        summary: data.summary.toString() || ''
                         price: data.price
-                        pages: data.pages
-                        publisher: data.publisher || ''
+                        pages: data.pages? || 0
+                        publisher: data.publisher.toString() || ''
                         ctime: new Date()
-                    console.log bkDetail
                     BookModel.add bkDetail,(err,result) ->
                         if err
-                            console.log err
+                          console.log err
                         else
                             BookModel.addCollection info,(err,result)->
                                 res.redirect '/people/' + info.uid
-
-        
 

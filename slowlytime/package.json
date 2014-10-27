@@ -11,8 +11,8 @@
     "stylus": "*",
     "request": "*",
     "async": "*",
-    "mongoose": "*",
     "mysql": "*",
-    "weibo": "*"
+    "weibo": "*",
+    "request": "*"
   }
 }

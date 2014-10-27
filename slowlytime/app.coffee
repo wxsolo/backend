@@ -11,6 +11,7 @@ contact = require("./routes/contact")
 http = require("http")
 path = require("path")
 ejs = require("ejs")
+log4js = require("log4js")
 app = express()
 ejs.open = "{{"
 ejs.close = "}}"
@@ -31,6 +32,22 @@ app.use require("stylus").middleware(path.join(__dirname, "public"))
 app.use express.static(path.join(__dirname, "public"))
 # development only
 app.use express.errorHandler()  if "development" is app.get("env")
+
+logger = log4js.getLogger('normal');
+logger.setLevel('INFO');
+
+log4js.configure
+  appenders:[    
+    type: 'console'
+    type: 'file'
+    filename: 'logs/access.log'
+    maxLogSize: 102400000,      
+    backups:4,      
+    category:'normal'     
+    ]
+  replaceConsole: true
+
+app.use log4js.connectLogger(logger, {level:'auto', format:':method :url'})
 http.createServer(app).listen app.get("port"), ->
   console.log "Express server listening on port " + app.get("port")
 
